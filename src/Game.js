@@ -243,9 +243,7 @@ class Game extends Phaser.Scene {
 
     for (var y = 0; y < 30; y++) {
       testGrid[y] = [];
-
       for (var x = 0; x < 40; x++) {
-        // @ts-ignore
         testGrid[y][x] = true;
       }
     }
@@ -258,7 +256,6 @@ class Game extends Phaser.Scene {
     for (let y = 0; y < 30; y++) {
       for (let x = 0; x < 40; x++) {
         if (testGrid[y][x] === true) {
-          //  Is this position valid for food? If so, add it here ...
           validLocations.push({ x, y });
         }
       }

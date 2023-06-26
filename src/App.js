@@ -9,8 +9,8 @@ const App = () => {
   const phaserConfig = useMemo(
     () => ({
       type: Phaser.WEBGL,
-      width: 640,
-      height: 480,
+      width: 960,
+      height: 720,
       backgroundColor: "#25304A",
       parent: "phaser",
       scene: Game,
