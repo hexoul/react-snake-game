@@ -103,7 +103,7 @@ class Game extends Phaser.Scene {
     ) {
       this.grow();
       this.eat();
-      //  For every 5 items of food eaten we'll increase the snake speed a little
+      // For every 5 items of food eaten we'll increase the snake speed a little
       if (this.snake.speed > 20 && this.total % 5 === 0) {
         this.snake.speed -= 5;
       }
@@ -116,7 +116,7 @@ class Game extends Phaser.Scene {
   }
 
   updateGrid(grid) {
-    //  Remove all body pieces from valid positions list
+    // Remove all body pieces from valid positions list
     this.snake.body.children.each((segment) => {
       var bx = segment.x / this.size;
       var by = segment.y / this.size;
@@ -189,7 +189,7 @@ class Game extends Phaser.Scene {
 
     this.snake.direction = this.snake.heading;
 
-    //  Update the body segments and place the last coordinate into this.tail
+    // Update the body segments and place the last coordinate into this.tail
     Phaser.Actions.ShiftPosition(
       this.snake.body.getChildren(),
       this.snake.headPosition.x * this.size,
@@ -209,7 +209,7 @@ class Game extends Phaser.Scene {
       this.game.events.emit(GAME_END);
       return false;
     } else {
-      //  Update the timer ready for the next movement
+      // Update the timer ready for the next movement
       this.snake.moveTime = time + this.snake.speed;
       return true;
     }
@@ -227,7 +227,7 @@ class Game extends Phaser.Scene {
     }
 
     if (this.snakeUpdate(time)) {
-      //  If the snake updated, we need to check for collision against food
+      // If the snake updated, we need to check for collision against food
       if (this.collideWithFood(this.food)) {
         this.repositionFood();
       }
@@ -235,10 +235,10 @@ class Game extends Phaser.Scene {
   }
 
   repositionFood() {
-    //  First create an array that assumes all positions
-    //  are valid for the new piece of food
+    // First create an array that assumes all positions
+    // are valid for the new piece of food
 
-    //  A Grid we'll use to reposition the food each time it's eaten
+    // A Grid we'll use to reposition the food each time it's eaten
     let testGrid = [];
 
     for (var y = 0; y < 30; y++) {
@@ -250,7 +250,7 @@ class Game extends Phaser.Scene {
 
     this.updateGrid(testGrid);
 
-    //  Purge out false positions
+    // Purge out false positions
     let validLocations = [];
 
     for (let y = 0; y < 30; y++) {
@@ -262,7 +262,7 @@ class Game extends Phaser.Scene {
     }
 
     if (validLocations.length > 0) {
-      //  Pick a random food position
+      // Pick a random food position
       const pos = Phaser.Math.RND.pick(validLocations);
       this.food.setPosition(
         pos.x * this.size + this.size / 2,
